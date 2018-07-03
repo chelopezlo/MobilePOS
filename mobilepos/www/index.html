@@ -33,17 +33,179 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+        <title>Bellisima POS</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+    <!-- Start of first page: #one -->
+    <div data-role="page" id="home">
+        <div data-role="header">
+            <h1>Sistema de gestión de ventas y cobranzas personal</h1>
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            <h2></h2>
+
+            <h3>Qu&eacute; deseas hacer?</h3>
+            <p><a href="#ventas" class="ui-btn ui-shadow ui-corner-all">Ventas</a></p>
+            <p><a id="createTable" class="ui-btn ui-shadow ui-corner-all">Clientes</a></p>
+            <p><a href="#productos" class="ui-btn ui-shadow ui-corner-all">Productos</a></p>
+            <p><a href="#two" class="ui-btn ui-shadow ui-corner-all">Cobranza</a></p>
+        </div><!-- /content -->
+
+        <div data-role="footer" data-theme="b">
+            <p><a href="#home" class="ui-btn ui-shadow ui-corner-all">Inicio</a></p>
+        </div><!-- /footer -->
+    </div><!-- /page one -->
+
+    <div data-role="page" id="ventas" data-theme="a">
+
+        <div data-role="header">
+            <h1>Two</h1>
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            <h2>Ventas</h2>
+            <form id="fmrVentas" data-ajax="false">
+                <div class="ui-field-contain">
+                    <select name="select-native-4" id="select-native-4">
+                        <option>Seleccionar...</option>
+                        <optgroup label="Labios">
+                            <option value="1">Labial Matte</option>
+                            <option value="2">Labial Tradicional</option>
+                            <option value="3">Balsamo Labial</option>
+                            <option value="4">Eos</option>
+                        </optgroup>
+                        <optgroup label="Ojos">
+                            <option value="5">Rimel</option>
+                            <option value="6">Sombra</option>
+                            <option value="7">Pestañas</option>
+                        </optgroup>
+                        <optgroup label="Cara">
+                            <option value="8">Base</option>
+                            <option value="9">Iluminador</option>
+                            <option value="10">Rubor</option>
+                        </optgroup>
+                        <optgroup label="Accesorios">
+                            <option value="11">Encrespador</option>
+                            <option value="12">Cosmetiquero</option>
+                            <option value="13">Espejo</option>
+                        </optgroup>
+                    </select>
+                    <input type="number" name="cantidad" id="cantidad" data-clear-btn="true" value="">
+                    <input type="number" name="precio" id="precio" data-clear-btn="true" value="">
+                    <input type="number" name="total" id="total" data-clear-btn="true" value="">
+                    <button id="save" class="ui-btn ui-btn-inline ui-icon-plus ui-btn-icon-left ui-corner-all">Guardar</button>
+                    <button id="reset" class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-left ui-corner-all">Limpiar</button>
+                </div>
+            </form>
+                <table data-role="table" id="tabla_nueva_venta" class="ui-body-d ui-shadow table-stripe ui-responsive ui-table" data-column-btn-theme="b" data-column-popup-theme="a">
+                    <thead>
+                    <tr class="ui-bar-d">
+                        <th data-priority="2" data-colstart="1" class="ui-table-priority-2">Nro.</th>
+                        <th data-colstart="2">Producto</th>
+                        <th data-priority="3" data-colstart="3" class="ui-table-priority-3">Cantidad</th>
+                        <th data-priority="1" data-colstart="4" class="ui-table-priority-1">Valor</th>
+                        <th data-priority="5" data-colstart="5" class="ui-table-priority-5">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th class="ui-table-priority-2">2</th>
+                        <td><a href="http://en.wikipedia.org/wiki/Casablanca_(film)" data-rel="external" class="ui-link">Casablanca</a></td>
+                        <td class="ui-table-priority-3">1942</td>
+                        <td class="ui-table-priority-1">97%</td>
+                        <td class="ui-table-priority-5">64</td>
+                    </tr>
+                    <tr>
+                        <th class="ui-table-priority-2">3</th>
+                        <td><a href="http://en.wikipedia.org/wiki/The_Godfather" data-rel="external" class="ui-link">The Godfather</a></td>
+                        <td class="ui-table-priority-3">1972</td>
+                        <td class="ui-table-priority-1">97%</td>
+                        <td class="ui-table-priority-5">87</td>
+                    </tr>
+                    <tr>
+                        <th class="ui-table-priority-2">4</th>
+                        <td><a href="http://en.wikipedia.org/wiki/Gone_with_the_Wind_(film)" data-rel="external" class="ui-link">Gone with the Wind</a></td>
+                        <td class="ui-table-priority-3">1939</td>
+                        <td class="ui-table-priority-1">96%</td>
+                        <td class="ui-table-priority-5">87</td>
+                    </tr>
+                    <tr>
+                        <th class="ui-table-priority-2">5</th>
+                        <td><a href="http://en.wikipedia.org/wiki/Lawrence_of_Arabia_(film)" data-rel="external" class="ui-link">Lawrence of Arabia</a></td>
+                        <td class="ui-table-priority-3">1962</td>
+                        <td class="ui-table-priority-1">94%</td>
+                        <td class="ui-table-priority-5">87</td>
+                    </tr>
+                    <tr>
+                        <th class="ui-table-priority-2">6</th>
+                        <td><a href="http://en.wikipedia.org/wiki/Dr._Strangelove" data-rel="external" class="ui-link">Dr. Strangelove Or How I Learned to Stop Worrying and Love the Bomb</a></td>
+                        <td class="ui-table-priority-3">1964</td>
+                        <td class="ui-table-priority-1">92%</td>
+                        <td class="ui-table-priority-5">74</td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div><!-- /content -->
+
+        <div data-role="footer">
+            <p><a href="#home" class="ui-btn ui-shadow ui-corner-all">Inicio</a></p>
+        </div><!-- /footer -->
+    </div><!-- /page two -->
+
+    <!-- Start of third page: #popup -->
+    <div data-role="page" id="productos">
+
+        <div data-role="header" data-theme="b">
+            <h1>Productos</h1>
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            <h2>Productos</h2>
+            <form id="fmrProductos" data-ajax="false">
+                <div class="ui-field-contain">
+                    <input type="text" name="nombreProducto" id="nombreProducto" data-clear-btn="true" value="">
+                    <input type="text" name="codigoProducto" id="codigoProducto" data-clear-btn="true" value="">
+                    <input type="text" name="descProducto" id="descProducto" data-clear-btn="true" value="">
+                    <button id="insertProducto" class="ui-btn ui-btn-inline ui-icon-plus ui-btn-icon-left ui-corner-all">Guardar</button>
+                    <button id="showTable" class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-left ui-corner-all">Limpiar</button>
+                </div>
+            </form>
+            <table data-role="table" id="listadoProductos" class="ui-body-d ui-shadow table-stripe ui-responsive ui-table" data-column-btn-theme="b" data-column-popup-theme="a">
+                <thead>
+                <tr class="ui-bar-d">
+                    <th data-priority="2" data-colstart="1" class="ui-table-priority-2">Nro.</th>
+                    <th data-colstart="2">Nombre</th>
+                    <th data-priority="3" data-colstart="3" class="ui-table-priority-3">C&oacute;digo</th>
+                    <th data-priority="1" data-colstart="4" class="ui-table-priority-1">Descripci&oacute;n</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="ui-table-priority-2">6</td>
+                        <td class="ui-table-priority-2">PROD</td>
+                        <td class="ui-table-priority-2">1964</td>
+                        <td class="ui-table-priority-2">Desc</td>
+                    </tr>
+                    <tr>
+                        <td class="ui-table-priority-2">6</td>
+                        <td class="ui-table-priority-2">PROD</td>
+                        <td class="ui-table-priority-2">1964</td>
+                        <td class="ui-table-priority-2">Desc</td>
+                    </tr>
+                </tbody>
+            </table>
+            <label id="rowCount"></label>
+        </div><!-- /content -->
+
+        <div data-role="footer">
+            <h4>Page Footer</h4>
+        </div><!-- /footer -->
+    </div><!-- /page popup -->
     </body>
 </html>
