@@ -108,14 +108,15 @@ $("#insertProducto").click(function(){
         var executeQuery = "INSERT INTO producto (nombre, codigo, descripcion) VALUES (?,?,?)";
         transaction.executeSql(executeQuery, [nombre,codigo,desc]
             , function(tx, result) {
-                   //$("#listadoProductos>tbody").html("");
+                   $("#listadoProductos>tbody").html("");
                    myDB.transaction(function(transaction) {
                    transaction.executeSql('SELECT * FROM producto', [], function (tx, results) {
                         var len = results.rows.length, i;
                         $("#rowCount").html(len);
                         for (i = 0; i < len; i++){
-                           $('<tr><td class="ui-table-priority-2">'+results.rows.item(i).id+'</td><td class="ui-table-priority-2">'+results.rows.item(i).nombre+'</td><td class="ui-table-priority-2">'+results.rows.item(i).codigo+'</td><td class="ui-table-priority-2">'+results.rows.item(i).desc+'</td></tr>').appendTo("#listadoProductos>tbody");
+                           $("#listadoProductos>tbody").append('<tr><td class="ui-table-priority-2">'+results.rows.item(i).id+'</td><td class="ui-table-priority-2">'+results.rows.item(i).nombre+'</td><td class="ui-table-priority-2">'+results.rows.item(i).codigo+'</td><td class="ui-table-priority-2">'+results.rows.item(i).descripcion+'</td></tr>');
                         }
+                        $("#listadoProductos").table("refresh");
                      }, null);
                    });
             },
@@ -133,8 +134,9 @@ $("#showTable").click(function(){
       var len = results.rows.length, i;
       $("#rowCount").html(len);
       for (i = 0; i < len; i++){
-         $('<tr><td class="ui-table-priority-2">'+results.rows.item(i).id+'</td><td class="ui-table-priority-2">'+results.rows.item(i).nombre+'</td><td class="ui-table-priority-2">'+results.rows.item(i).codigo+'</td><td class="ui-table-priority-2">'+results.rows.item(i).desc+'</td></tr>').appendTo("#listadoProductos>tbody");
+         $("#listadoProductos>tbody").append('<tr><td class="ui-table-priority-2">'+results.rows.item(i).id+'</td><td class="ui-table-priority-2">'+results.rows.item(i).nombre+'</td><td class="ui-table-priority-2">'+results.rows.item(i).codigo+'</td><td class="ui-table-priority-2">'+results.rows.item(i).descripcion+'</td></tr>');
       }
+      $("#listadoProductos").table("refresh");
     }, null);
     });
 });
